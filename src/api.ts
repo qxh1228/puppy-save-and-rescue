@@ -138,6 +138,7 @@ export const getLostPets = ((async (event) => {
 
     // TODO: Finish implementation here
     const result = db.exec("SELECT * FROM pets WHERE id not in (select pet_id from owners_pets) ");
-    return { statusCode: 200, body: JSON.stringify(result) }
+    const prettyRestults = serialize(result);
+    return { statusCode: 200, body: JSON.stringify(prettyRestults) }
 }))
 
